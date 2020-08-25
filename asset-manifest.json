@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/treact/static/css/main.00770f9f.chunk.css",
-    "main.js": "/treact/static/js/main.7400ccc4.chunk.js",
-    "main.js.map": "/treact/static/js/main.7400ccc4.chunk.js.map",
+    "main.js": "/treact/static/js/main.693a93be.chunk.js",
+    "main.js.map": "/treact/static/js/main.693a93be.chunk.js.map",
     "runtime-main.js": "/treact/static/js/runtime-main.777573eb.js",
     "runtime-main.js.map": "/treact/static/js/runtime-main.777573eb.js.map",
     "static/css/2.6011fe8e.chunk.css": "/treact/static/css/2.6011fe8e.chunk.css",
-    "static/js/2.299d5e16.chunk.js": "/treact/static/js/2.299d5e16.chunk.js",
-    "static/js/2.299d5e16.chunk.js.map": "/treact/static/js/2.299d5e16.chunk.js.map",
+    "static/js/2.72bb5e2b.chunk.js": "/treact/static/js/2.72bb5e2b.chunk.js",
+    "static/js/2.72bb5e2b.chunk.js.map": "/treact/static/js/2.72bb5e2b.chunk.js.map",
     "index.html": "/treact/index.html",
-    "precache-manifest.2f0d2bc8352cef3f55ccba1aa3f17944.js": "/treact/precache-manifest.2f0d2bc8352cef3f55ccba1aa3f17944.js",
+    "precache-manifest.97ae1552a0550e2af171dae568888d57.js": "/treact/precache-manifest.97ae1552a0550e2af171dae568888d57.js",
     "service-worker.js": "/treact/service-worker.js",
     "static/css/2.6011fe8e.chunk.css.map": "/treact/static/css/2.6011fe8e.chunk.css.map",
     "static/css/main.00770f9f.chunk.css.map": "/treact/static/css/main.00770f9f.chunk.css.map",
-    "static/js/2.299d5e16.chunk.js.LICENSE.txt": "/treact/static/js/2.299d5e16.chunk.js.LICENSE.txt",
+    "static/js/2.72bb5e2b.chunk.js.LICENSE.txt": "/treact/static/js/2.72bb5e2b.chunk.js.LICENSE.txt",
     "static/media/AboutUsPage.jpeg": "/treact/static/media/AboutUsPage.3722f7e7.jpeg",
     "static/media/AgencyLandingPage.jpeg": "/treact/static/media/AgencyLandingPage.df4fcdeb.jpeg",
     "static/media/BlogIndexPage.jpeg": "/treact/static/media/BlogIndexPage.7e8818a2.jpeg",
@@ -22,6 +22,7 @@
     "static/media/HostingCloudLandingPage.jpeg": "/treact/static/media/HostingCloudLandingPage.29cc9383.jpeg",
     "static/media/HotelTravelLandingPage.jpeg": "/treact/static/media/HotelTravelLandingPage.4fde2dfb.jpeg",
     "static/media/LoginPage.jpeg": "/treact/static/media/LoginPage.d5a48afb.jpeg",
+    "static/media/MainLandingPageHero.png": "/treact/static/media/MainLandingPageHero.198e3c8d.png",
     "static/media/PricingPage.jpeg": "/treact/static/media/PricingPage.f3822e94.jpeg",
     "static/media/PrivacyPolicyPage.jpeg": "/treact/static/media/PrivacyPolicyPage.60bc4cc1.jpeg",
     "static/media/RestaurantLandingPage.jpeg": "/treact/static/media/RestaurantLandingPage.b747f875.jpeg",
@@ -56,6 +57,7 @@
     "static/media/facebook-icon.5e030c93.svg": "/treact/static/media/facebook-icon.5e030c93.svg",
     "static/media/fast-icon.svg": "/treact/static/media/fast-icon.6c9e80ee.svg",
     "static/media/github-icon.61eae8b2.svg": "/treact/static/media/github-icon.61eae8b2.svg",
+    "static/media/handle-icon.20ccfb09.svg": "/treact/static/media/handle-icon.20ccfb09.svg",
     "static/media/hero-screenshot-1.png": "/treact/static/media/hero-screenshot-1.1669eb96.png",
     "static/media/hero-screenshot-2.png": "/treact/static/media/hero-screenshot-2.31c082be.png",
     "static/media/linkedin-icon.fa5666fa.svg": "/treact/static/media/linkedin-icon.fa5666fa.svg",
@@ -104,8 +106,8 @@
   "entrypoints": [
     "static/js/runtime-main.777573eb.js",
     "static/css/2.6011fe8e.chunk.css",
-    "static/js/2.299d5e16.chunk.js",
+    "static/js/2.72bb5e2b.chunk.js",
     "static/css/main.00770f9f.chunk.css",
-    "static/js/main.7400ccc4.chunk.js"
+    "static/js/main.693a93be.chunk.js"
   ]
 }

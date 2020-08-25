@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f2ab9609f139ec97c37a48e53cb34028",
+    "revision": "f4cea9f963804e26802e9de03670672c",
     "url": "/treact/index.html"
   },
   {
-    "revision": "5ddf31edd0905164e414",
+    "revision": "eb2d94700a03bda41277",
     "url": "/treact/static/css/2.6011fe8e.chunk.css"
   },
   {
-    "revision": "04faaad959195c4e7122",
+    "revision": "9e670c14756f64e096bc",
     "url": "/treact/static/css/main.00770f9f.chunk.css"
   },
   {
-    "revision": "5ddf31edd0905164e414",
-    "url": "/treact/static/js/2.299d5e16.chunk.js"
+    "revision": "eb2d94700a03bda41277",
+    "url": "/treact/static/js/2.72bb5e2b.chunk.js"
   },
   {
     "revision": "c022aea8d0ed7fdc451e876422d0ae33",
-    "url": "/treact/static/js/2.299d5e16.chunk.js.LICENSE.txt"
+    "url": "/treact/static/js/2.72bb5e2b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "04faaad959195c4e7122",
-    "url": "/treact/static/js/main.7400ccc4.chunk.js"
+    "revision": "9e670c14756f64e096bc",
+    "url": "/treact/static/js/main.693a93be.chunk.js"
   },
   {
     "revision": "f86cb74cdf0012585426",
@@ -58,6 +58,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "d5a48afbe6bab4933939eff7653758fb",
     "url": "/treact/static/media/LoginPage.d5a48afb.jpeg"
+  },
+  {
+    "revision": "198e3c8da19c8041db9b1702f4efba1f",
+    "url": "/treact/static/media/MainLandingPageHero.198e3c8d.png"
   },
   {
     "revision": "f3822e94600621912441e404b6e9c98f",
@@ -194,6 +198,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "61eae8b2845b7d35c3d58786733ea3d2",
     "url": "/treact/static/media/github-icon.61eae8b2.svg"
+  },
+  {
+    "revision": "20ccfb09e5a6a5360835f862fed25066",
+    "url": "/treact/static/media/handle-icon.20ccfb09.svg"
   },
   {
     "revision": "1669eb96c162ff86e8318d02b7f89f24",
