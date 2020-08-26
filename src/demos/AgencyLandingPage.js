@@ -3,6 +3,7 @@ import tw from "twin.macro"; //eslint-disable-line
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
+import { Container, Content2Xl, ContentWithVerticalPadding } from "components/misc/Layouts";
 import Hero from "components/hero/BackgroundAsImage.js";
 import Features from "components/features/DashedBorderSixFeatures";
 import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
@@ -15,13 +16,18 @@ import ContactUsForm from "components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
 
+const SectionContainer = tw(ContentWithVerticalPadding)``;
+
 export default () => (
-  <AnimationRevealPage>
+  <AnimationRevealPage disabled>
     <Hero />
+    
     <MainFeature />
     <Features />
     <MainFeature2 />
-    <Portfolio />
+    <SectionContainer id="landingPageDemos">
+      <Portfolio />
+    </SectionContainer>
     <Testimonial
       subheading="Testimonials"
       heading={

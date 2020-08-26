@@ -6,7 +6,7 @@ import Hero from "components/hero/TwoColumnWithVideo.js";
 
 function App() {
   return (
-    <AnimationRevealPage>
+    <AnimationRevealPage disabled>
       <Hero />
     </AnimationRevealPage>
   )

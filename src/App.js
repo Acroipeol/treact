@@ -108,21 +108,20 @@ import TestNextPage from "TestNextPage.js";
 
 import { Link, Route, HashRouter } from "react-router-dom";
 // import { render } from "@testing-library/react";
+import Headers from "components/headers/light.js";
+import AgencyLandingPage from "demos/AgencyLandingPage.js";
+import MainLandingPage from "MainLandingPage";
 
 export default function App() {
 
   return (
     <HashRouter basename="/">
       <div>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-
-        <hr />
+        
 
         <Route exact path="/"> 
-          <TestPage /> 
+          {/* <TestPage />  */}
+          <MainLandingPage />
         </Route>
         <Route path="/about">
           <TestNextPage />

@@ -1,17 +1,174 @@
-import React from "react"
-// import "style.css"
-import "tailwindcss/dist/base.css"
-import AnimationRevealPage from "helpers/AnimationRevealPage"
-import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
-import Pricing from "components/pricing/ThreePlans.js";
+import React, { useState, useEffect } from "react";
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { Rnd } from "react-rnd";
+import { motion } from "framer-motion";
 
-function App() {
+import { components } from "ComponentRenderer.js";
+import AnimationRevealPage from "helpers/AnimationRevealPage.js";
+import { Container, Content2Xl, ContentWithVerticalPadding } from "components/misc/Layouts";
+import tw from "twin.macro";
+import styled from "styled-components";
+import { css } from "styled-components/macro";
+import { LogoLink } from "components/headers/light.js";
+import { SectionHeading as HeadingBase } from "components/misc/Headings";
+import { SectionDescription as DescriptionBase } from "components/misc/Typography";
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
+
+import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
+import { ReactComponent as HandleIcon } from "images/handle-icon.svg";
+import { ReactComponent as ArrowRightIcon} from "images/arrow-right-3-icon.svg";
+
+import heroScreenshotImageSrc from "images/demo/MainLandingPageHero.png";
+import logo from "images/logo.svg";
+import useInView from "use-in-view";
+
+import TestNextPage from "TestNextPage.js"; 
+import Pricing from "components/pricing/ThreePlansWithHalfPrimaryBackground";
+import BackgroundAsImage from "components/hero/BackgroundAsImage.js";
+
+/* Hero */
+const Row = tw.div`flex`;
+const NavRow = tw(Row)`flex flex-col sm:flex-row items-center justify-between`;
+const DownloadLink = tw.a`mt-8 sm:mt-0 transition duration-300 font-medium pb-1 border-b-2 text-primary-500 border-purple-300 hocus:border-primary-500`;
+const HeroRow = tw(Row)`flex-col lg:flex-row justify-between items-center py-20 lg:py-24 max-w-screen-2xl mx-auto`;
+
+const Column = tw.div``;
+const TextColumn = tw(Column)`mx-auto lg:mr-0 max-w-2xl lg:max-w-xl xl:max-w-2xl flex-shrink-0`;
+const Heading = tw(HeadingBase)`text-center lg:text-left text-primary-900 leading-snug`;
+const Description = tw(
+  DescriptionBase
+)`mt-4 text-center lg:text-left lg:text-base text-gray-700 max-w-lg mx-auto lg:mx-0`;
+const Actions = tw.div`flex flex-col sm:flex-row justify-center lg:justify-start`;
+const ActionButton = tw(
+  AnchorLink
+)`px-8 py-3 font-bold rounded bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300 mt-12 inline-block tracking-wide text-center px-10 py-4 font-semibold tracking-normal`;
+const PrimaryButton = tw(ActionButton)``;
+const SecondaryButton = tw(
+  ActionButton
+)`mt-6 sm:mt-12 sm:ml-8 bg-gray-300 text-gray-800 hocus:bg-gray-400 hocus:text-gray-900`;
+const FeatureList = tw.ul`mt-6 leading-loose flex flex-wrap max-w-xl mx-auto lg:mx-0`;
+const Feature = tw.li`mt-2 flex items-center flex-shrink-0 w-full sm:w-1/2 justify-center lg:justify-start`;
+const FeatureIcon = tw(CheckboxIcon)`w-5 h-5 text-primary-500`;
+const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
+const ImageColumn = tw(Column)`mx-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-8`;
+const ImageContainer = tw.div``;
+const Image = tw.img`max-w-full rounded-t sm:rounded`;
+
+const SectionContainer = tw(ContentWithVerticalPadding)``;
+const SectionHeading = tw(HeadingBase)`text-primary-900`;
+const SectionDescription = tw(DescriptionBase)`text-center mx-auto text-gray-600 max-w-4xl`;
+
+const PreviewCards = tw.div`flex flex-wrap -mr-12`;
+const PreviewCardContainer = tw.div`mt-24 mx-auto md:mx-0 max-w-lg w-full md:w-1/2 lg:w-1/3 pr-12`;
+const PreviewCard = tw(motion.a)`block rounded-lg shadow-raised`;
+const PreviewCardImageContainer = tw.div`rounded-t-lg border-0 border-b-0`;
+const PreviewCardImage = styled(motion.div)`
+  ${props => css`background-image: url("${props.imageSrc}");`}
+  ${tw`h-128 md:h-144 bg-cover bg-left-top`}
+`;
+const PreviewButton = tw(PrimaryButtonBase)`w-full rounded-b-lg rounded-t-none py-5 font-semibold`;
+
+const ComponentsContainer = tw.div`mt-24`;
+const ComponentsType = tw.h3`text-4xl font-black text-primary-500 border-b-4 border-primary-500 inline-block`;
+const Components = tw.div``;
+const Component = tw.div`mt-12 border rounded-lg bg-white`;
+const ComponentHeading = tw.div`px-8 py-5 border-b flex flex-col sm:flex-row justify-between items-center`
+const ComponentName = tw.h6`text-lg`;
+const ComponentPreviewLink = tw.a`mt-4 sm:mt-0 text-primary-500 hocus:text-primary-900 transition duration-300 font-semibold flex items-center`
+const ComponentContent = tw.div`flex justify-between overflow-hidden rounded-b-lg bg-gray-600 relative`;
+const ResizableBox = styled(Rnd)`
+  ${tw`relative! bg-white pr-4`}
+  .resizeHandleWrapper > div {
+    ${tw`w-4! right-0!`}
+  }
+`;
+const ResizeHandleButton = tw.button`cursor-col-resize focus:outline-none w-4 border-l bg-gray-100 absolute right-0 inset-y-0`;
+
+export default ({
+  features = null,
+  primaryButtonUrl = "#landingPageDemos",
+  primaryButtonText = "Explore Demos",
+  secondaryButtonUrl = "#componentDemos",
+  secondaryButtonText = "View Components",
+  buttonRoundedCss = "",
+
+}) => {
+  const previewImageAnimationVariants = {
+    rest: {
+      backgroundPositionY: "0%"
+    },
+    hover: {
+      backgroundPositionY: "100%",
+      transition: { type: "tween", ease: "linear", duration: 5 }
+    }
+  };
+
+  
+
   return (
     <AnimationRevealPage disabled>
-      <Hero />
-      <Pricing />
-    </AnimationRevealPage>
-  )
-}
+      <Container tw="bg-gray-100 -mx-8 -mt-8 pt-8 px-8">
+        <Content2Xl>
+          <NavRow>
+            <LogoLink href="#componentDemos">
+              <img src={logo} alt="" />
+              Treact
+            </LogoLink>
+            <DownloadLink href="#landingPageDemos">
+              Download Now
+            </DownloadLink>
+          </NavRow>
+          <HeroRow>
+            <TextColumn>
+              <Heading>Modern React Templates for every need.</Heading>
+              <Description>
+                Easily customizable modern React Templates which are also lightweight and simple to setup. All
+                components are modular and fully responsive for great mobile experience as well as big desktop screens. Brand Colors
+                are also fully customizable.
+              </Description>
+              
+              <Actions>
+              <a href="#landingPageDemos" >Hello</a>
+                <PrimaryButton href="#landingPageDemos" css={buttonRoundedCss}>
+                  {primaryButtonText}
+                </PrimaryButton>
+                <SecondaryButton href={secondaryButtonUrl}>
+                  {secondaryButtonText}
+                </SecondaryButton>
+              </Actions>
+            </TextColumn>
+            <ImageColumn>
+              <ImageContainer>
+                <Image src={heroScreenshotImageSrc} />
+              </ImageContainer>
+            </ImageColumn>
+          </HeroRow>
+          <div id="landingPageDemos">
+            
+            <Pricing />
+            
+          </div>
+          <SectionContainer>
+            <SectionHeading>Inner Pages</SectionHeading>
+            <SectionDescription>
+              We also provide  additional inner pages for your various needs like a signup, login,
+              pricing, about us, contact, blog etc. To view them in action click the "View Live Demo" button.
+            </SectionDescription>
+            
+          </SectionContainer>
 
-export default App
+          <div id="componentDemos">
+            
+            {/* <TestNextPage /> */}
+            
+            <BackgroundAsImage />
+            {/* <BlocksRenderer blocks={Object.values(blocks)} /> */}
+          </div>
+        </Content2Xl>
+      </Container>
+    </AnimationRevealPage>
+  );
+};
+
+
+
