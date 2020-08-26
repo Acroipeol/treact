@@ -101,36 +101,63 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
-import ComponentRenderer from "ComponentRenderer.js";
-import MainLandingPage from "MainLandingPage.js"; 
+// import ComponentRenderer from "ComponentRenderer.js";
+// import MainLandingPageCopy from "MainLandingPageCopy.js"; 
 import TestPage from "TestPage.js"; 
 import TestNextPage from "TestNextPage.js"; 
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link, Route, HashRouter } from "react-router-dom";
+// import { render } from "@testing-library/react";
 
 export default function App() {
-  // return <AnimationRevealPage disabled></AnimationRevealPage>;
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/components/:type/:subtype/:name">
-          <ComponentRenderer />
-        </Route>
-        <Route path="/components/:type/:name">
-          <ComponentRenderer />
+    <HashRouter basename="/">
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+
+        <hr />
+
+        <Route exact path="/"> 
+          <TestPage /> 
         </Route>
         <Route path="/about">
-          <TestPage />
-        </Route>
-        <Route path="/pricing">
           <TestNextPage />
         </Route>
-        <Route path="/">
-          <MainLandingPage />
-        </Route>
-      </Switch>
-    </Router>
+      </div>
+    </HashRouter>
   );
+
+
+
+
+  // return <AnimationRevealPage disabled></AnimationRevealPage>;
+  // return (
+  //   <HashRouter basename="/">
+  //     <Router>
+  //       <Switch>
+  //         <Route path="/components/:type/:subtype/:name">
+  //           <ComponentRenderer />
+  //         </Route>
+  //         <Route path="/components/:type/:name">
+  //           <ComponentRenderer />
+  //         </Route>
+  //         <Route path="/about">
+  //           <TestPage />
+  //         </Route>
+  //         <Route path="/pricing">
+  //           <TestNextPage />
+  //         </Route>
+  //         <Route path="/">
+  //           <MainLandingPageCopy />
+  //         </Route>
+  //       </Switch>
+  //     </Router>
+  //   </HashRouter>
+  // );
 }
 
 // export default EventLandingPage;
